@@ -1,0 +1,16 @@
+generator photon {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:password@localhost:5432/postgres"
+}
+
+model status {
+  status      Float
+  location    String
+  recorded_at DateTime @id @default(now())
+
+  @@index([recorded_at], name: "status_recorded_at_idx")
+}
